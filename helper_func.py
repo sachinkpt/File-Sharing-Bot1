@@ -84,7 +84,11 @@ async def get_message_id(client, message):
     else:
         return 0
 
-
+async def get_shortlink(url, api, link):
+    shortzy = Shortzy(api_key=api, base_site=url)
+    link = await shortzy.convert(link)
+    return link
+    
 def get_readable_time(seconds: int) -> str:
     count = 0
     up_time = ""
